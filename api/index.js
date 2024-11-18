@@ -94,7 +94,7 @@ const handler = async (req, res) => {
     <rect class="container" x="0" y="0" width="280" height="400" rx="10" ry="10" />
     <rect class="header" x="0" y="0" width="280" height="160" />
     <rect class="container" x="0" y="160" width="280" height="240" />
-    <image class="avatar" href="${avatarUrl}" x="90" y="110" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
+    <image class="avatar" xlink:href="${avatarImg}" x="90" y="110" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
     <text class="text title" x="140" y="240" text-anchor="middle">${data?.name}</text>
     <text class="text subtitle" x="140" y="265" text-anchor="middle">${username}</text>
     <line x1="0" y1="300" x2="280" y2="300" class="divider" />
