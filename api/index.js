@@ -25,10 +25,11 @@ const handler = async (req, res) => {
     const response = await skebApi.get(`/users/${username.trim().replace('@', '')}`)
     const data = response.data || {}
     const headerUrl = data?.header_url
-    const headerImg = headerUrl//await image2uri(headerUrl, { ext: '.jpg' })
+    const headerImg = await image2uri(headerUrl, { ext: '.jpg' })
     const avatarUrl = data?.avatar_url
-    const avatarImg = avatarUrl//await image2uri(avatarUrl)
+    const avatarImg = await image2uri(avatarUrl)
     const Logo = "https://fcdn.skeb.jp/assets/v1/commons/icon.svg"
+    const logoImg = await image2uri(Logo)
     const creator = data?.creator
     const svg1 = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
@@ -82,7 +83,7 @@ const handler = async (req, res) => {
     <rect class="header" x="0" y="0" width="280" height="160" rx="10" ry="10" />
     <rect class="container" x="0" y="160" width="280" height="240" rx="10" ry="10"  />
     <image class="avatar" href="${avatarImg}" x="90" y="110" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
-    <image href="${Logo}" class="logo" x="5" y="5" width="25" height="25" />
+    <image href="${logoImg}" class="logo" x="5" y="5" width="25" height="25" />
     <text class="text title" x="140" y="240" text-anchor="middle">${data?.name}</text>
     <text class="text subtitle" x="140" y="265" text-anchor="middle">${username}</text>
     <line x1="0" y1="300" x2="280" y2="300" class="divider" />
