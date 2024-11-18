@@ -65,7 +65,7 @@ const handler = async (req, res) => {
     }
     
     .label {
-      font-size: 12px;
+      font-size: 16px;
     }
     
     .divider {
