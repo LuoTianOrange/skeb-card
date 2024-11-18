@@ -29,7 +29,7 @@ const handler = async (req, res) => {
     const avatarUrl = data?.avatar_url
     const avatarImg = await image2uri(avatarUrl)
     const Logo = "https://fcdn.skeb.jp/assets/v1/commons/icon.svg"
-    const logoImg = await image2uri(Logo)
+    const logoImg = await image2uri(Logo, { ext: '.svg' })
     const creator = data?.creator
     const svg1 = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
