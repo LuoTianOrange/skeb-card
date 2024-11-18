@@ -36,6 +36,8 @@ const handler = async (req, res) => {
     <style>
     .container {
       fill: white;
+      stroke: #e4e4e7;
+      stroke-width: 1;
     }
     
     .header {
@@ -105,7 +107,9 @@ const handler = async (req, res) => {
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
     <style>
     .container {
-      fill: white;filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+      fill: white;
+      stroke: #e4e4e7;
+      stroke-width: 1;
     }
     
     .header {
