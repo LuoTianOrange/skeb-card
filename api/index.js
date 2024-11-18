@@ -25,7 +25,7 @@ const handler = async (req, res) => {
     const response = await skebApi.get(`/users/${username.trim().replace('@', '')}`)
     const data = response.data || {}
     const headerUrl = data?.header_url
-    const headerImg = await image2uri(headerUrl)
+    const headerImg = await image2uri(headerUrl, { ext: '.jpg' })
     const avatarUrl = data?.avatar_url
     const avatarImg = await image2uri(avatarUrl)
     const svg = `
