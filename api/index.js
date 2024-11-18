@@ -24,6 +24,7 @@ const handler = async (req, res) => {
     const response = await skebApi.get(`/users/${username.trim().replace('@', '')}`)
     const data = response.data || {}
     const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
     <style>
     .logo {
       height: 6em;
@@ -79,7 +80,6 @@ const handler = async (req, res) => {
       stroke-width: 1;
     }
     </style>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
     <defs>
       <pattern id="headerImage" patternUnits="userSpaceOnUse" width="280" height="160">
         <image href="${data?.header_url}" x="0" y="0" width="280" height="160" preserveAspectRatio="xMidYMid slice" />
@@ -106,7 +106,7 @@ const handler = async (req, res) => {
     </g>
   </svg>
   `
-    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Content-Type', 'image/svg+xml');
     res.send(svg)
 
 }
