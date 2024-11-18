@@ -28,7 +28,6 @@ const handler = async (req, res) => {
     const headerImg = await image2uri(headerUrl)
     const avatarUrl = data?.avatar_url
     const avatarImg = await image2uri(avatarUrl)
-    console.log(avatarImg)
     const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
     <style>
@@ -88,7 +87,7 @@ const handler = async (req, res) => {
     </style>
     <defs>
       <pattern id="headerImage" patternUnits="userSpaceOnUse" width="280" height="160">
-        <image href="${headerUrl}" x="0" y="0" width="280" height="160" preserveAspectRatio="xMidYMid slice" />
+        <image href="${headerImg}" x="0" y="0" width="280" height="160" preserveAspectRatio="xMidYMid slice" />
       </pattern>
     </defs>
     <rect class="container" x="0" y="0" width="280" height="400" rx="10" ry="10" />
