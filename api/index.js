@@ -20,10 +20,66 @@ const skebApi = axios.create({
     }
 });
 const handler = async (req, res) => {
-    const { username, isJson } = req.query
+    const { username } = req.query
     const response = await skebApi.get(`/users/${username.trim().replace('@', '')}`)
     const data = response.data || {}
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
+    const svg = `
+    <style>
+    .logo {
+      height: 6em;
+      padding: 1.5em;
+      will-change: filter;
+      transition: filter 300ms;
+    }
+    
+    .logo:hover {
+      filter: drop-shadow(0 0 2em #646cffaa);
+    }
+    
+    .logo.vue:hover {
+      filter: drop-shadow(0 0 2em #42b883aa);
+    }
+    
+    .container {
+      fill: white;
+      stroke: black;
+      stroke-width: 1;
+    }
+    
+    .header {
+      fill: url(#headerImage);
+    }
+    
+    .avatar {
+      clip-path: circle(50%);
+    }
+    
+    .text {
+      font-family: Arial, sans-serif;
+    }
+    
+    .title {
+      font-size: 22px;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+    }
+    
+    .stats {
+      font-size: 25px;
+    }
+    
+    .label {
+      font-size: 12px;
+    }
+    
+    .divider {
+      stroke: gray;
+      stroke-width: 1;
+    }
+    </style>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
     <defs>
       <pattern id="headerImage" patternUnits="userSpaceOnUse" width="280" height="160">
         <image href="${data?.header_url}" x="0" y="0" width="280" height="160" preserveAspectRatio="xMidYMid slice" />
@@ -49,61 +105,6 @@ const handler = async (req, res) => {
       <text class="text label" x="0" y="20" text-anchor="middle">请求状态</text>
     </g>
   </svg>
-  <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-
-.container {
-  fill: white;
-  stroke: black;
-  stroke-width: 1;
-}
-
-.header {
-  fill: url(#headerImage);
-}
-
-.avatar {
-  clip-path: circle(50%);
-}
-
-.text {
-  font-family: Arial, sans-serif;
-}
-
-.title {
-  font-size: 22px;
-}
-
-.subtitle {
-  font-size: 16px;
-}
-
-.stats {
-  font-size: 25px;
-}
-
-.label {
-  font-size: 12px;
-}
-
-.divider {
-  stroke: gray;
-  stroke-width: 1;
-}
-</style>
   `
     res.setHeader('Content-Type', 'text/html');
     res.send(svg)
