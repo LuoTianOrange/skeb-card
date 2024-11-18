@@ -1,4 +1,5 @@
 import axios from 'axios';
+import image2uri from "image2uri";
 const skebApi = axios.create({
     baseURL: 'https://skeb.jp/api',
     headers: {
@@ -23,6 +24,11 @@ const handler = async (req, res) => {
     const { username } = req.query
     const response = await skebApi.get(`/users/${username.trim().replace('@', '')}`)
     const data = response.data || {}
+    const headerUrl = data?.header_url
+    // const headerImg = await image2uri(headerUrl)
+    const avatarUrl = data?.avatar_url
+    const avatarImg = await image2uri(avatarUrl)
+    console.log(avatarImg)
     const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
     <style>
@@ -82,13 +88,13 @@ const handler = async (req, res) => {
     </style>
     <defs>
       <pattern id="headerImage" patternUnits="userSpaceOnUse" width="280" height="160">
-        <image href="${data?.header_url}" x="0" y="0" width="280" height="160" preserveAspectRatio="xMidYMid slice" />
+        <image href="${headerUrl}" x="0" y="0" width="280" height="160" preserveAspectRatio="xMidYMid slice" />
       </pattern>
     </defs>
     <rect class="container" x="0" y="0" width="280" height="400" rx="10" ry="10" />
     <rect class="header" x="0" y="0" width="280" height="160" />
     <rect class="container" x="0" y="160" width="280" height="240" />
-    <image class="avatar" href="${data?.avatar_url}" x="90" y="110" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
+    <image class="avatar" href="${avatarUrl}" x="90" y="110" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
     <text class="text title" x="140" y="240" text-anchor="middle">${data?.name}</text>
     <text class="text subtitle" x="140" y="265" text-anchor="middle">${username}</text>
     <line x1="0" y1="300" x2="280" y2="300" class="divider" />
