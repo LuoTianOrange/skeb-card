@@ -108,7 +108,7 @@ const handler = async (req, res) => {
     <text class="text label" x="0" y="20" text-anchor="middle">请求状态</text>
     </g>
     <g transform="translate(225, 350)">
-      <text id="amount" class="text stats" x="0" y="0" text-anchor="middle">${defaultAmount}jpy</text>
+      <text id="amount" class="text stats" x="0" y="0" text-anchor="middle">${defaultAmount}</text>
       <text id="genre" class="text label" x="0" y="20" text-anchor="middle">插图-价格</text>
     </g>
   </svg>
