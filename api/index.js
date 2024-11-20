@@ -31,6 +31,8 @@ const handler = async (req, res) => {
     const Logo = "https://fcdn.skeb.jp/assets/v1/commons/icon.svg"
     const logoImg = await image2uri(Logo, { ext: '.svg' })
     const creator = data?.creator
+
+    //是画师
     const svg1 = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
     <style>
@@ -75,6 +77,9 @@ const handler = async (req, res) => {
     .logo{
 
     }
+    #amount{
+      font-size: 20px;
+    }
     </style>
     <defs>
     <pattern id="headerImage" patternUnits="userSpaceOnUse" width="280" height="160">
@@ -89,20 +94,21 @@ const handler = async (req, res) => {
     <text class="text title" x="140" y="240" text-anchor="middle">${data?.name}</text>
     <text class="text subtitle" x="140" y="265" text-anchor="middle">${username}</text>
     <line x1="0" y1="300" x2="280" y2="300" class="divider" />
-    <g transform="translate(70, 350)">
-      <text class="text stats" x="0" y="0" text-anchor="middle">${data?.sent_public_works_count}</text>
-      <text class="text label" x="0" y="20" text-anchor="middle">约稿数</text>
+    <g transform="translate(55, 350)">
+    <text class="text stats" x="0" y="0" text-anchor="middle">${data?.received_works_count}</text>
+    <text class="text label" x="0" y="20" text-anchor="middle">接稿数</text>
     </g>
-    <g transform="translate(140, 350)">
-      <text class="text stats" x="0" y="0" text-anchor="middle">${data?.received_works_count}</text>
-      <text class="text label" x="0" y="20" text-anchor="middle">接稿数</text>
+    <g transform="translate(135, 350)">
+    <text class="text stats" x="0" y="0" text-anchor="middle">${data?.acceptable ? '开放' : '关闭'}</text>
+    <text class="text label" x="0" y="20" text-anchor="middle">请求状态</text>
     </g>
-    <g transform="translate(210, 350)">
-      <text class="text stats" x="0" y="0" text-anchor="middle">${data?.acceptable ? '开放' : '关闭'}</text>
-      <text class="text label" x="0" y="20" text-anchor="middle">请求状态</text>
+    <g transform="translate(225, 350)">
+      <text id="amount" class="text stats" x="0" y="0" text-anchor="middle">${data?.skills[0].default_amount}jpy</text>
+      <text id="genre" class="text label" x="0" y="20" text-anchor="middle">插图-价格</text>
     </g>
   </svg>
   `
+  //不是画师
     const svg2 = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
     <style>
