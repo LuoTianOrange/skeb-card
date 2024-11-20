@@ -32,6 +32,11 @@ const handler = async (req, res) => {
     const logoImg = await image2uri(Logo, { ext: '.svg' })
     const creator = data?.creator
 
+    let defaultAmount = '';
+    if (data.skills && data.skills.length > 0) {
+        defaultAmount = `${data.skills[0].default_amount}jpy`
+    }
+
     //是画师
     const svg1 = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="280" height="400">
@@ -103,7 +108,7 @@ const handler = async (req, res) => {
     <text class="text label" x="0" y="20" text-anchor="middle">请求状态</text>
     </g>
     <g transform="translate(225, 350)">
-      <text id="amount" class="text stats" x="0" y="0" text-anchor="middle">${data?.skills[0].default_amount}jpy</text>
+      <text id="amount" class="text stats" x="0" y="0" text-anchor="middle">${defaultAmount}jpy</text>
       <text id="genre" class="text label" x="0" y="20" text-anchor="middle">插图-价格</text>
     </g>
   </svg>
