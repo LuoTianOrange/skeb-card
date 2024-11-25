@@ -91,9 +91,9 @@ const handler = async (req, res) => {
     <image href="${headerImg}" x="0" y="0" width="280" height="160" preserveAspectRatio="xMidYMid slice" />
     </pattern>
     </defs>
-    <rect class="container" x="0" y="0" width="280" height="400" rx="10" ry="10" />
-    <rect class="header" x="0" y="0" width="280" height="160" rx="10" ry="10" />
-    <rect class="container" x="0" y="160" width="280" height="240" rx="10" ry="10"  />
+    <rect class="container" x="0" y="0" width="280" height="400" />
+    <rect class="header" x="0" y="0" width="280" height="160" />
+    <rect class="container" x="0" y="160" width="280" height="240"  />
     <image class="avatar" href="${avatarImg}" x="90" y="110" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
     <image href="${logoImg}" class="logo" x="5" y="5" width="25" height="25" />
     <text class="text title" x="140" y="240" text-anchor="middle">${data?.name}</text>
@@ -164,9 +164,9 @@ const handler = async (req, res) => {
     <image href="${headerImg}" x="0" y="0" width="280" height="160" preserveAspectRatio="xMidYMid slice" />
     </pattern>
     </defs>
-    <rect class="container" x="0" y="0" width="280" height="400" rx="10" ry="10" />
-    <rect class="header" x="0" y="0" width="280" height="160" rx="10" ry="10" />
-    <rect class="container" x="0" y="160" width="280" height="240" rx="10" ry="10"  />
+    <rect class="container" x="0" y="0" width="280" height="400" />
+    <rect class="header" x="0" y="0" width="280" height="160" />
+    <rect class="container" x="0" y="160" width="280" height="240"  />
     <image class="avatar" href="${avatarImg}" x="90" y="110" width="100" height="100" preserveAspectRatio="xMidYMid slice" />
     <image href="${logoImg}" class="logo" x="5" y="5" width="25" height="25" />
     <text class="text title" x="140" y="240" text-anchor="middle">${data?.name}</text>
